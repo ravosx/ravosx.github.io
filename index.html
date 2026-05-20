@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+
+<div class="auth">
+
+    <h1 id="title">Registrácia</h1>
+
+    <input id="meno" placeholder="Meno">
+    <input id="heslo" type="password" placeholder="Heslo">
+
+    <button onclick="auth()">Pokračovať</button>
+
+    <p onclick="toggleMode()" class="link">
+        Zmeniť režim
+    </p>
+
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
