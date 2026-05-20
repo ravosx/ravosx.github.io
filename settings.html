@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="auth">
+
+    <h1>Nastavenia</h1>
+
+    <input id="bio" placeholder="Bio">
+    <input id="image" placeholder="URL fotky">
+
+    <input id="color" type="color">
+
+    <button onclick="save()">Uložiť</button>
+
+</div>
+
+<script>
+let user = JSON.parse(localStorage.getItem("user"));
+
+function save(){
+
+    user.bio = document.getElementById("bio").value;
+    user.image = document.getElementById("image").value;
+    user.bg = document.getElementById("color").value;
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    window.location.href = "profile.html";
+}
+</script>
+
+</body>
+</html>
