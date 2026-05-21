@@ -1,37 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 <head>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nastavenia</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main class="auth">
+        <h1>Nastavenia</h1>
 
-<div class="auth">
+        <input id="bio" placeholder="Bio">
+        <input id="image" placeholder="URL fotky">
+        <input id="color" type="color">
 
-    <h1>Nastavenia</h1>
+        <button onclick="save()">Ulozit</button>
+        <button onclick="back()">Spat</button>
+    </main>
 
-    <input id="bio" placeholder="Bio">
-    <input id="image" placeholder="URL fotky">
+    <script>
+        const savedUser = localStorage.getItem("user");
+        const user = savedUser ? JSON.parse(savedUser) : {
+            meno: "Ravosx",
+            heslo: "",
+            bio: "",
+            image: "",
+            bg: "#298bac"
+        };
 
-    <input id="color" type="color">
+        document.getElementById("bio").value = user.bio || "";
+        document.getElementById("image").value = user.image || "";
 
-    <button onclick="save()">Uložiť</button>
+        function save() {
+            user.bio = document.getElementById("bio").value;
+            user.image = document.getElementById("image").value;
+            user.bg = document.getElementById("color").value;
 
-</div>
+            localStorage.setItem("user", JSON.stringify(user));
+            window.location.href = "profile.html";
+        }
 
-<script>
-let user = JSON.parse(localStorage.getItem("user"));
-
-function save(){
-
-    user.bio = document.getElementById("bio").value;
-    user.image = document.getElementById("image").value;
-    user.bg = document.getElementById("color").value;
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    window.location.href = "profile.html";
-}
-</script>
-
+        function back() {
+            window.location.href = "profile.html";
+        }
+    </script>
 </body>
 </html>

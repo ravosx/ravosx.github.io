@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app">
+        <aside class="sidebar">
+            <button onclick="openSettings()">Nastavenia</button>
+            <button onclick="toggleDark()">Dark mode</button>
+            <button onclick="toggleLang()">Jazyk</button>
+            <button onclick="showPeople()">Najst ludi</button>
+            <button onclick="logout()">Odhlasit</button>
+        </aside>
+
+        <section class="main">
+            <img id="img" class="avatar" alt="Profilova fotka">
+            <h1 id="meno"></h1>
+            <p id="bio"></p>
+            <div id="people" class="people"></div>
+        </section>
+    </main>
+
+    <script>
+        const fallbackUser = {
+            meno: "Ravosx",
+            bio: "Toto je moj test profil.",
+            image: "",
+            bg: "linear-gradient(to bottom, rgb(41,139,172), lightblue)"
+        };
+
+        const savedUser = localStorage.getItem("user");
+        const user = savedUser ? JSON.parse(savedUser) : fallbackUser;
+
+        document.getElementById("meno").innerText = user.meno || fallbackUser.meno;
+        document.getElementById("bio").innerText = user.bio || "Ziadne bio";
+        document.getElementById("img").src = user.image || "https://via.placeholder.com/120";
+        document.body.style.background = user.bg || fallbackUser.bg;
+
+        function openSettings() {
+            window.location.href = "settings.html";
+        }
+
+        function toggleDark() {
+            document.body.classList.toggle("dark");
+        }
+
+        let lang = "sk";
+
+        function toggleLang() {
+            lang = lang === "sk" ? "en" : "sk";
+            alert(lang === "sk" ? "Slovencina" : "English");
+        }
+
+        function showPeople() {
+            document.getElementById("people").innerHTML = `
+                <h3>Ludia online</h3>
+                <p>Peter</p>
+                <p>Jano</p>
+                <p>Marek</p>
+            `;
+        }
+
+        function logout() {
+            localStorage.removeItem("user");
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

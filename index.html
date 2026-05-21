@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="sk">
 <head>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravosx profil</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <main class="auth">
+        <h1 id="title">Registracia</h1>
 
-<div class="auth">
+        <input id="meno" placeholder="Meno" autocomplete="username">
+        <input id="heslo" type="password" placeholder="Heslo" autocomplete="current-password">
 
-    <h1 id="title">Registrácia</h1>
+        <button onclick="auth()">Pokracovat</button>
 
-    <input id="meno" placeholder="Meno">
-    <input id="heslo" type="password" placeholder="Heslo">
+        <p onclick="toggleMode()" class="link">Zmenit rezim</p>
+    </main>
 
-    <button onclick="auth()">Pokračovať</button>
-
-    <p onclick="toggleMode()" class="link">
-        Zmeniť režim
-    </p>
-
-</div>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
